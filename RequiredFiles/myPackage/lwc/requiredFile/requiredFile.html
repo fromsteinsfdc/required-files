@@ -1,0 +1,35 @@
+<template>
+    <lightning-card title={label} class="slds-border">
+        <template if:false={requiredFile}>
+            <lightning-layout >
+                <lightning-layout-item>
+                    <lightning-file-upload 
+                        name="fileUpload"
+                        label="Select file"
+                        accept={fileTypes}
+                        record-id={recordId}
+                        onuploadfinished={handleUploadFinished}
+                        disabled={requiredFile}></lightning-file-upload>
+                    </lightning-layout-item>
+                    <lightning-layout-item>                            
+                        <template if:true={helptext}>
+                            <lightning-helptext content={helptext}></lightning-helptext>        
+                        </template>      
+                    </lightning-layout-item>
+                </lightning-layout>
+            </template>
+            <template if:true={requiredFile}>
+                <lightning-layout>
+                    <lightning-tile label={contentVersion.Title} type="media" onclick={openFile} class="slds-text-link_reset">
+                        <lightning-avatar slot="media" src={fileImageUrl} fallback-icon-name="doctype:unknown"></lightning-avatar>
+                        <ul class="slds-list_horizontal slds-has-dividers_right">
+                            <li class="slds-item slds-text-body_small"><lightning-formatted-date-time value={contentVersion.ContentModifiedDate}></lightning-formatted-date-time></li>
+                            <!--<li class="slds-item">{formattedFileSize}</li>-->
+                            <li class="slds-item slds-text-body_small">{contentVersion.ContentModifiedBy.Name}</li>
+                            <li class="slds-item slds-text-body_small">{contentVersion.FileExtension}</li>
+                        </ul>
+                    </lightning-tile>
+                </lightning-layout>
+            </template>
+    </lightning-card>
+</template>

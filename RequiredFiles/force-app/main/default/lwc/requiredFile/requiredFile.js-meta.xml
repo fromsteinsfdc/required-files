@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Required File</masterLabel>
+    <apiVersion>48.0</apiVersion>
+    <isExposed>true</isExposed>
+      <targets>
+        <target>lightning__RecordPage</target>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+     <!-- Configuring the design attributes -->
+      <targetConfigs>
+        <targetConfig targets="lightning__RecordPage">
+            <property name="label" 
+                type="String"
+                label="Label"
+                default="Upload File"
+                description="Indicate the expected file"
+                required="true"/>
+            <property name="fieldName" 
+                type="String" 
+                label="Field Name" 
+                description="Optionally, you can map this file to a checkbox field on this object. When a file is uploaded, the checkbox is set to true. By default or if the file is deleted, the checkbox is set to false."
+                datasource="apex://GetObjectCheckboxes"
+                required="false"/>
+            <property name="helptext" 
+                type="String" 
+                label="Help text" 
+                description="Display additional information for the user (like this!)"/>
+            <property name="fileTypes" 
+                type="String" 
+                label="Accepted Format"
+                description="Add comma-separated list to limit files to only certain extensions, e.g. '.pdf,.xls'. Leave blank to allow all file types."/>
+            <property name="forceName" 
+                type="String" 
+                label="Overwrite File Name" 
+                description="Enter text here to automatically overwrite the file name. Leave blank to keep original file name."/>
+        </targetConfig>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="recordId" type="String" label="Record ID"
+                description="Should be set to {!recordId}"/>
+            <property name="label" 
+                type="String"
+                label="Label"
+                default="Upload File"
+                description="Indicate the expected file"
+                required="true"/>
+            <property name="fieldName" 
+                type="String" 
+                label="Field Name" 
+                description="Optionally select a checkbox field to mark as true upon file upload"
+                datasource="apex://GetObjectCheckboxes"
+                required="false"/>
+            <property name="helptext" 
+                type="String" 
+                label="Help text" 
+                description="Display additional information for the user (like this!)"/>
+            <property name="fileTypes" 
+                type="String" 
+                label="Valid File Types"
+                description="Add comma-separated list to accept only certain file types, e.g. '.pdf,.xls'. Leave blank to allow all file types"/>
+            <property name="forceName" 
+                type="String" 
+                label="Overwrite File Name" 
+                description="Enter text here to automatically overwrite the file name. Leave blank to keep original file name"/>
+
+        </targetConfig>
+
+      </targetConfigs>
+</LightningComponentBundle>
