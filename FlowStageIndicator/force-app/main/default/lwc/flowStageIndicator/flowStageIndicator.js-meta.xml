@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>51.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Flow Stage Indicator</masterLabel>
+    <targets>
+        <target>lightning__FlowScreen</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen">
+            <property name="stageListString" label="1. List of Stages" description="Enter list of stages as a comma-separated string (e.g. Intro, Details, Review)" type="String" required="true" role="inputOnly"></property>
+            <property name="currentStage" label="2. Active Stage" description="Enter the active stage. Needs to be one of the stages listed above." type="String" required="true" role="inputOnly"></property>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>
